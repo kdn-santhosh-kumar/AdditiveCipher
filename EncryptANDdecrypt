@@ -1,0 +1,35 @@
+def encrypt(text,s):
+    result = ""
+   # transverse the plain text
+    for i in range(len(text)):
+      char = text[i]
+        # Encrypt uppercase characters in plain text
+      
+      if (char.isupper()):
+         result += chr((ord(char) + s-65) % 26 + 65)
+      # Encrypt lowercase characters in plain text
+      else:
+         result += chr((ord(char) + s - 97) % 26 + 97)
+    #print("Encrypted Text "+result)
+    return result   
+    
+def decrypt(text,s):
+    result=""
+    for i in range(len(text)):
+        char=text[i]
+        if(char.isupper()):
+            result +=chr((ord(char)-s-65)%26+65)
+        else:
+            result +=chr((ord(char)-s-97)%26+97)
+    return result
+            
+print("Enter Text")
+text = input()
+print("Enter shift number")
+s = int(input())
+print( "Original Text : " + text)
+print ("Shift Number : " + str(s))
+cipherText=encrypt(text,s)
+print("Encrypted "+cipherText)
+plainText=decrypt(cipherText,s)
+print("Decrypted "+plainText)
